@@ -1,16 +1,22 @@
 @echo off
 
-cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  cmd /u /c echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && ""%~s0"" %Apply%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
-call :isAdmin
-if %errorlevel% == 0 (
-    goto start
-) else (
-    echo.
+:askAdmin
+REM Проверяем, нужно ли выполнить скрипт с правами администратора
+set /p adminRights="Execute with admin rights (optional)? [Y/N]: "
+if /i "%adminRights%"=="Y" (
+    REM Выполняем скрипт с правами администратора
+    cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  cmd /u /c echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && ""%~s0"" %Apply%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
+    call :isAdmin
+    if %errorlevel% == 0 (
+        goto start
+    ) else (
+        echo.
+    )
 )
 
 :isAdmin
 fsutil dirty query %systemdrive% >nul
-exit /b %errorlevel%
+goto askAdmin
 
 :start
 
@@ -39,7 +45,7 @@ CSCRIPT //nologo "%TempVBSFile%"
 :boot
 cd /d "c:\CommandPower\home"
 cls
-color a
+color 1f
 echo *******
 echo *ATHOS*
 echo *******
@@ -240,7 +246,8 @@ echo    5 = Purple      D = Light Purple
 echo    6 = Yellow      E = Light Yellow
 echo    7 = White       F = Bright White
 set /p "text_color=Enter Text Color: "
-color %text_color%
+set /p "back_color=Enter Background Color: "
+color %back_color%%text_color%
 goto home
 
 :msg

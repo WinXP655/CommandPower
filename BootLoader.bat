@@ -5,8 +5,6 @@ ping localhost -n 3 >nul
 :bootloader
 if exist "%userprofile%\desktop\CommandPower\CommandPower.bat" (
     goto restartcp
-) else if exist "%userprofile%\desktop\WinBatchBox.cp" (
-    goto bootwbb
 ) else (
     echo You Don't Have Any OS
     pause
@@ -46,30 +44,12 @@ if not exist "%cp_file%" (
 
 echo.
 echo 1. CommandPower
-echo 2. WinBatchBox
 set /p inp="Enter Number: "
 if /i "%inp%"=="1" goto bootcp_commandpower
-if /i "%inp%"=="2" goto bootcp_winbatchbox
 goto home
 
 :bootcp_commandpower
 start "CommandPower" "c:\CommandPower\Sys32\CommandPower.bat"
-exit
-
-:bootcp_winbatchbox
-set "wbb_file=%userprofile%\desktop\WinBatchBox.cp"
-if not exist "%wbb_file%" (
-    echo Error: %wbb_file% not found.
-    goto home
-)
-set "temp_batch=%temp%\temp_batch_%random%.bat"
-echo @echo off > "%temp_batch%"
-echo cls >> "%temp_batch%"
-echo echo Running %wbb_file% >> "%temp_batch%"
-echo type "%wbb_file%" ^> "%%temp%%\temp_script.bat" >> "%temp_batch%"
-echo start "WinBatchBox" cmd /c "%%temp%%\temp_script.bat" >> "%temp_batch%"
-call "%temp_batch%"
-del "%temp_batch%"
 exit
 
 :home

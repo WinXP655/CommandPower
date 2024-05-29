@@ -1,24 +1,40 @@
-CommandPower App Store Guidelines
+# CommandPower App Store Guidelines
 
-Thank you for contributing to the CommandPower App Store! Follow these guidelines to submit your .cp file for inclusion in the App Store:
+## Welcome to the CommandPower App Store!
 
-Submission Requirements:
-File Type: Submit only .cp files.
-Executable Files (.exe): If your app includes an executable (.exe) file or other formats, place them in the LIB folder (c:\CommandPower\Sys32\LIB). Create a .cp file in the APPS folder (c:\CommandPower\Sys32\APPS) that opens your app.
-And if you have to save a file, save it in the SAVE Folder (c:\CommandPower\Sys32\SAVE)
+We're excited to have you contribute to our growing collection of applications. To ensure a smooth submission process, please adhere to the following guidelines when submitting your `.cp` files for inclusion in the App Store.
 
-App and File Locations:
-Apps Folder: c:\CommandPower\Sys32\APPS
-LIB Folder: c:\CommandPower\Sys32\LIB
+### Submission Requirements
 
-Submission Process:
-Pull Requests: Submit your .cp file through pull requests.
-Include Information: Clearly mention the purpose and functionality of your app in the pull request.
+- **File Type:** Only `.cp` files are accepted for submission.
+- **Executable Files:** If your app includes an executable file (`.exe`) or other formats, please place them in the `LIB` folder:
+  c:\CommandPower\Sys32\LIB
+- Then, create a `.cp` file in the `APPS` folder that initiates your app:
+  c:\CommandPower\Sys32\APPS
+- **Save Files:** Any files that need to be saved should be placed in the `SAVE` folder:
+  c:\CommandPower\Sys32\SAVE
 
-Note:
-Desktop Requirement: Keep the CommandPower folder and its contents, including the BootLoader.bat file, on your desktop.
+### App and File Locations
 
-Booting Process:
-You need to click on BootLoader.bat file.
+- **Apps Folder:** 
+c:\CommandPower\Sys32\APPS
 
-v1.1.0
+- **LIB Folder:** 
+c:\CommandPower\Sys32\LIB
+
+### Submission Process
+
+1. **Pull Requests:** Submit your `.cp` file via pull requests on our platform.
+2. **Include Information:** In your pull request, clearly describe the purpose and functionality of your app.
+
+### Important Note
+
+- **Desktop Requirement:** Ensure that the `CommandPower` folder and all its contents, including the `BootLoader.bat` file, are maintained on your desktop for proper operation.
+
+### Booting Process
+
+- To start your application, simply click on the `BootLoader.bat` file.
+
+---
+
+Current Version: v1.1.0
